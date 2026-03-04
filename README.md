@@ -23,3 +23,9 @@ any of the stages by switching to the target branch.</p>
 <li>"api/products" endpoint displays the products</li> 
 <li>Branch "step002" now exists in GitHub repo</li> 
 <p>Now create and switch to "step003" branch</p> 
+
+<h1>ExpressJS Deep Dive</h1>
+<h2>Tasks done in steps 3 and 4</h2>
+<ul>
+<li>made so you will be avalable to search by the id </li>
+<li>it will be in step004 repo</li>
