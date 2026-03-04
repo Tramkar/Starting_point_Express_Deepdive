@@ -30,3 +30,19 @@ app.get('/api/product',(req, res) => {
 ];
 res.status(200).json(product);
 });
+
+app.get("api/users/:id",(req, res) => {
+    const parsedUser = parseInt(req.params.id);
+    
+    if (isNaN(parsedUser)){
+        return response.status(400).json({error:"Invalid user ID"});
+    }
+    const findUser = mockUser.find(user => user.id ==parsedUser);
+    if(!findUser){
+        return response.status(404).json({error:"User not found"});
+
+    }
+
+    response.status(200).json(findUser);
+});
+
