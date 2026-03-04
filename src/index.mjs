@@ -13,13 +13,13 @@ app.get('/', (req, res) => {
     res.status(200).json({message: "hey!This is a test message."});
 });
 
-app.get('/api/user',(req, res) => {
+app.get('/api/users',(req, res) => {
     const user = [
     { id: 1, name: 'Alice'},
     { id: 2, name: 'Bob'},
     { id: 3, name: 'Charlie'}
 ];
-response.status(200).json(user);
+res.status(200).json(user);
 });
 
 app.get('/api/product',(req, res) => {
@@ -28,5 +28,5 @@ app.get('/api/product',(req, res) => {
     { id: 2, name: 'Mouse', price: 29.99},
     { id: 3, name: 'Keyboard', price: 79.99}
 ];
-response.status(200).json(product);
+res.status(200).json(product);
 });
