@@ -1,11 +1,53 @@
+//import express from 'express';
+//import dotenv from 'dotenv';
+//import connectDB from './config/db.js';
+//import userRoutes from './routes/users.js';
+
+
+
+//dotenv.config(); // Load environment variables first
+
+//const app = express();
+//const PORT = process.env.PORT || 3000;
+
+// Connect to MongoDB
+//connectDB();
+
+// GET all users
+//router.get('/', async (req, res) => {
+ // try {
+ //   const users = await User.find(); // must await
+ //   res.json(users);
+ // } catch (err) {
+  //  console.error(err);
+   // res.status(500).json({ message: 'Server error' });
+ // }
+//});
+
+
+// Middleware
+//app.use(express.json());
+
+// Routes
+//app.use('/api/users', userRoutes);
+
+// Test route
+//app.get('/', (req, res) => {
+//  res.json({ message: "API running" });
+//});
+
+// Start server
+//app.listen(PORT, () => {
+//  console.log(`Server running on port ${PORT}`);
+//});
+
+
 import express from 'express';
 import dotenv from 'dotenv';
 import connectDB from './config/db.js';
 import userRoutes from './routes/users.js';
 
-
-
-dotenv.config(); // Load environment variables first
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -28,9 +70,6 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
-
-
 
 
 
