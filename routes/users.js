@@ -45,4 +45,53 @@ router.post('/', async (req, res) => {
   }
 });
 
+// DELETE user by id
+router.delete('/:id', async (req, res) => {
+  try {
+    const user = await Student.findByIdAndDelete(req.params.id);
+    if (!user) return res.status(404).json({ message: 'Not found' });
+    res.status(200).json({ message: 'Deleted', user });
+  } catch (err) {
+    console.error(err);
+    res.status(400).json({ message: 'Invalid ID' });
+  }
+});
+
+// PUT update user by id
+router.put('/:id', async (req, res) => {
+  const body = req.body || {};
+  const { username, course, module } = body;
+
+  if (!username && !course && !module) {
+    return res.status(400).json({ message: 'At least one field required: username, course, module' });
+  }
+
+  try {
+    const user = await Student.findByIdAndUpdate(req.params.id, { username, course, module }, { new: true, runValidators: true });
+    if (!user) return res.status(404).json({ message: 'Not found' });
+    res.status(200).json(user);
+  } catch (err) {
+    console.error(err);
+    res.status(400).json({ message: 'Invalid ID or data' });
+  }
+});
+
+// PATCH partial update user by id
+router.patch('/:id', async (req, res) => {
+  const body = req.body || {};
+
+  if (Object.keys(body).length === 0) {
+    return res.status(400).json({ message: 'At least one field required' });
+  }
+
+  try {
+    const user = await Student.findByIdAndUpdate(req.params.id, body, { new: true, runValidators: true });
+    if (!user) return res.status(404).json({ message: 'Not found' });
+    res.status(200).json(user);
+  } catch (err) {
+    console.error(err);
+    res.status(400).json({ message: 'Invalid ID or data' });
+  }
+});
+
 export default router;
